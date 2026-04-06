@@ -9,6 +9,21 @@
 <!--  ----------------------------------------------------------------------  -->
 <!--  NOTE: Please add the following <FORM> element to your page.             -->
 <!--  ----------------------------------------------------------------------  -->
+<script>
+  // Function to get a value from the URL by its key
+  function getParameterByName(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+  }
+
+  // Set the value of the hidden field (replace '00NXXXXX' with your field ID)
+  window.onload = function() {
+    const utmSource = getParameterByName('utm_source'); // Target parameter name
+    if (utmSource) {
+      document.getElementById('utm_source').value = utmSource;
+    }
+  };
+</script>
 
 <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00D5i00000Aenai" method="POST">
 
@@ -27,6 +42,8 @@
 
 <label for="last_name">Last Name</label><input  id="last_name" maxlength="80" name="last_name" size="20" type="text" /><br>
 
+<label for="utm_source">UTM Source</label><input  id="utm_source" maxlength="80" name="utm_source" size="20" type="text" /><br>
+
 <label for="email">Email</label><input  id="email" maxlength="80" name="email" size="20" type="text" /><br>
 
 <label for="company">Company</label><input  id="company" maxlength="40" name="company" size="20" type="text" /><br>
@@ -43,5 +60,6 @@
 </select><br>
 
 <input type="submit" name="submit">
+
 
 </form>
